@@ -9,4 +9,9 @@ export class UserResolver {
   getUserById(@Args('id',{type:() => Int}) id:number) {
     return mockUsers.find((user) => user.id === id)
   }
+
+  @Query(() => [User])
+  getUsers(){
+    return mockUsers
+  }
 }
