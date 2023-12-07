@@ -3,7 +3,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { UserResolver } from './users/UserResolver';
-import { UserSettingResolver } from './graphql/resolvers/UserSettingResolver';
+import { UserSettingResolver } from './users/UserSettingResolver';
 import ormConfig from './config/orm.config';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';

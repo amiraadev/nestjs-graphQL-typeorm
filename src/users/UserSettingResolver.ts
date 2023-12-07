@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
-import { UserSetting } from '../models/userSetting';
-import { CreateUserSettingsInput } from '../utils/CreateUserSettingsInput';
+import { UserSetting } from '../graphql/models/userSetting';
+import { CreateUserSettingsInput } from '../graphql/utils/CreateUserSettingsInput';
 import { mockUserSettings } from 'src/__mocks__/mockUserSettings';
 
 export const incrementalId = 5;

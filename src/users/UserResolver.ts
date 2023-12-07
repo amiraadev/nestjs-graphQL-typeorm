@@ -23,7 +23,7 @@ export class UserResolver {
   constructor(@Inject(UserService) private userService:UserService) { }
   @Query((returns) => User, { nullable: true })
   getUserById(@Args('id', { type: () => Int }) id: number) {
-    return mockUsers.find((user) => user.id === id);
+    return this.userService.getUserById(id);
   }
 
   @Query(() => [User])
