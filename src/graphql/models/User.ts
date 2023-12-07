@@ -4,6 +4,8 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
+  OneToOne,
+  JoinColumn,
   CreateDateColumn,
   OneToMany,
 } from 'typeorm';
@@ -24,6 +26,8 @@ export class User {
   @Field({ nullable: true })
   displayName?: string;
 
+  @OneToOne(() =>UserSetting)
+  @JoinColumn()
   @Field({ nullable: true })
   settings?: UserSetting;
 }
