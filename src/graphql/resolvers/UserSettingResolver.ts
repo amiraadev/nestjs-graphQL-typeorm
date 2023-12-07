@@ -2,7 +2,6 @@
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
 import { UserSetting } from '../models/userSetting';
 import { CreateUserSettingsInput } from '../utils/CreateUserSettingsInput';
-import { mockUserSettings } from 'src/__mocks__/mockUserSettings';
 import { Inject } from '@nestjs/common';
 import { UserSettingsService } from '../../users/UserSettingsService';
 
