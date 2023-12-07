@@ -12,10 +12,14 @@ type User {
   id: Int!
   username: String!
   displayName: String
-  settings: UserSetting!
+  settings: UserSetting
 }
 
 type Query {
   getUserById(id: Int!): User
   getUsers: [User!]!
+}
+
+type Mutation {
+  createUser(username: String!, displayName: String): User!
 }
