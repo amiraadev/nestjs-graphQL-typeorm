@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { UserResolver } from './graphql/resolvers/UserResolver';
 import { UserSettingResolver } from './graphql/resolvers/UserSettingResolver';
+import ormConfig from './config/orm.config';
 
 @Module({
   imports: [
@@ -11,7 +12,9 @@ import { UserSettingResolver } from './graphql/resolvers/UserSettingResolver';
       driver: ApolloDriver,
       autoSchemaFile: 'src/schema.gql',
     }),
-    TypeOrmModule.forRoot<ApolloDriverConfig>,
+    TypeOrmModule.forRootAsync({
+      useFactory: ormConfig,
+    }),
   ],
   controllers: [],
   providers: [UserResolver, UserSettingResolver],
