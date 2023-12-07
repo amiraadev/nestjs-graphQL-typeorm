@@ -14,11 +14,11 @@ export class UserSetting {
   @Field((type) => Int)
   userId: number;
 
-  @Column()
+  @Column({ default: false })
   @Field({ defaultValue: false })
   receiveNotifications: boolean;
 
-  @Column()
+  @Column({ default: false })
   @Field({ defaultValue: false })
   receiveEmails: boolean;
 }

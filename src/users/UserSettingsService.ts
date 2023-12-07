@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -10,9 +11,13 @@ export class UserSettingsService {
     @InjectRepository(UserSetting)
     private userSettingsRepository: Repository<UserSetting>,
   ) {}
-
+  getUserSettingById(userId: number) {
+    return this.userSettingsRepository.findOneBy({ userId });
+  }
   createUserSettings(CreateUserSettingsData: CreateUserSettingsInput) {
-    const newUser = this.userSettingsRepository.create(CreateUserSettingsData);
-    return this.userSettingsRepository.save(newUser);
+    const newUserSetting = this.userSettingsRepository.create(
+      CreateUserSettingsData,
+    );
+    return this.userSettingsRepository.save(newUserSetting);
   }
 }
