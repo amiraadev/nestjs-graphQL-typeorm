@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 
 @ObjectType()
