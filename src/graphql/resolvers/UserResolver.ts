@@ -1,9 +1,11 @@
+/* eslint-disable prettier/prettier */
 import { Resolver, Query } from '@nestjs/graphql';
+import { User } from '../models/User';
 
 @Resolver()
 export class UserResolver {
-  @Query()
-  getUser((returns)=>User) {
+  @Query((returns) => User)
+  getUser() {
     return {
       id: 1,
       username: 'amira',
