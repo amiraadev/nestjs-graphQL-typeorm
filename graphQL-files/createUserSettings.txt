@@ -1,0 +1,7 @@
+mutation {
+  createUserSettings(CreateUserSettingsData: { userId: 5,receiveNotifications:false,receiveEmails:false }) {
+    userId
+    receiveNotifications
+    receiveEmails
+  }
+}

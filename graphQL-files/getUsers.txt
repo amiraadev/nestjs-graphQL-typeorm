@@ -1,0 +1,11 @@
+query{
+    getUsers{
+      id
+      username
+      settings {
+        userId,
+        receiveEmails,
+        receiveNotifications
+      }
+    }      
+}

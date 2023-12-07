@@ -1,0 +1,15 @@
+mutation {
+  createUser(CreateUserData :{
+    username:"samar"
+    displayName:"tlili"
+  }){
+    id 
+    username
+    displayName
+    settings {
+      userId
+      receiveEmails
+      receiveNotifications
+    }
+  }
+}
