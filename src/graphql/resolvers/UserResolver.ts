@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
-import { Resolver, Query,Args ,Int} from '@nestjs/graphql';
+import { Resolver, Query,Args ,Int,ResolveField,Parent} from '@nestjs/graphql';
 import { User } from '../models/User';
 import { mockUsers } from 'src/__mocks__/mockUsers';
+import { UserSetting } from '../models/userSetting';
 
-@Resolver()
+@Resolver((of) => User)
 export class UserResolver {
   @Query((returns) => User, {nullable:true})
   getUserById(@Args('id',{type:() => Int}) id:number) {
@@ -13,5 +14,11 @@ export class UserResolver {
   @Query(() => [User])
   getUsers(){
     return mockUsers
+  }
+
+  @ResolveField((returns) => UserSetting,{name:"settings"})
+  getUserSettings(@Parent() user:User){
+    console.log(user);
+    
   }
 }
