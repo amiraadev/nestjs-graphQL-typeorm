@@ -14,5 +14,5 @@ export class User {
   displayName?: string; 
 
   @Field({ nullable: true })
-  setting?: UserSetting; 
+  settings?: UserSetting; 
 }

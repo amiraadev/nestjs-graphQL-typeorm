@@ -12,7 +12,6 @@ type User {
   id: Int!
   username: String!
   displayName: String
-  setting: UserSetting
   settings: UserSetting!
 }
 
