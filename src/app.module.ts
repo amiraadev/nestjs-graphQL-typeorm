@@ -2,10 +2,11 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
-import { UserResolver } from './graphql/resolvers/UserResolver';
+import { UserResolver } from './users/UserResolver';
 import { UserSettingResolver } from './graphql/resolvers/UserSettingResolver';
 import ormConfig from './config/orm.config';
 import { ConfigModule } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -17,8 +18,9 @@ import { ConfigModule } from '@nestjs/config';
     TypeOrmModule.forRootAsync({
       useFactory: ormConfig,
     }),
+    UsersModule,
   ],
   controllers: [],
-  providers: [UserResolver, UserSettingResolver],
+  providers: [UserSettingResolver],
 })
 export class AppModule {}

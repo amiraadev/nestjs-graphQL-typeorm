@@ -8,16 +8,19 @@ import {
   Parent,
   Mutation
 } from '@nestjs/graphql';
-import { User } from '../models/User';
+import { User } from '../graphql/models/User';
 import { mockUsers } from 'src/__mocks__/mockUsers';
-import { UserSetting } from '../models/userSetting';
+import { UserSetting } from '../graphql/models/userSetting';
 import { mockUserSettings } from 'src/__mocks__/mockUserSettings';
-import { CreateUserInput } from '../utils/CreateUserInput';
+import { CreateUserInput } from '../graphql/utils/CreateUserInput';
+import { UserService } from './UserService';
+import { Inject } from '@nestjs/common';
 
-export let incrementalId = 5;
+export const incrementalId = 5;
 
 @Resolver((of) => User)
 export class UserResolver {
+  constructor(@Inject(UserService) private userService:UserService) { }
   @Query((returns) => User, { nullable: true })
   getUserById(@Args('id', { type: () => Int }) id: number) {
     return mockUsers.find((user) => user.id === id);
@@ -25,7 +28,7 @@ export class UserResolver {
 
   @Query(() => [User])
   getUsers() {
-    return mockUsers;
+    return this.userService.getUsers();
   }
 
   @ResolveField((returns) => UserSetting, { name: 'settings', nullable: true })
@@ -38,8 +41,7 @@ export class UserResolver {
   createUser(
     @Args('CreateUserData') CreateUserData:CreateUserInput
   ) {
-    const newUser = { ...CreateUserData, id: ++incrementalId };
-    mockUsers.push(newUser);
-    return newUser;
+    return this.userService.createUser(CreateUserData);
+
   }
 }

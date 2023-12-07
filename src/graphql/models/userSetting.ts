@@ -3,10 +3,8 @@ import { ObjectType, Field, Int } from '@nestjs/graphql';
 import {
   Entity,
   PrimaryColumn,
-  PrimaryGeneratedColumn,
   Column,
-  CreateDateColumn,
-  OneToMany,
+  
 } from 'typeorm';
 
 @Entity({ name: 'userSettingsEntity' })
